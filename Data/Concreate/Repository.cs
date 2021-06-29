@@ -80,13 +80,13 @@ namespace Data.Concreate
                     else
                         query = query.OrderByDescending(orderBy.Predicate);
                 else
-                if (orderBy.PredicateThenBy != null)
-                    if (orderBy.PredicateThenBy.Direction == OrderBy.desc)
-                        query = query.OrderBy(orderBy.Predicate).ThenByDescending(orderBy.PredicateThenBy.Predicate);
+                    if (orderBy.PredicateThenBy != null)
+                        if (orderBy.PredicateThenBy.Direction == OrderBy.desc)
+                            query = query.OrderBy(orderBy.Predicate).ThenByDescending(orderBy.PredicateThenBy.Predicate);
+                        else
+                            query = query.OrderBy(orderBy.Predicate).ThenBy(orderBy.PredicateThenBy.Predicate);
                     else
-                        query = query.OrderBy(orderBy.Predicate).ThenBy(orderBy.PredicateThenBy.Predicate);
-                else
-                    query = query.OrderBy(orderBy.Predicate);
+                        query = query.OrderBy(orderBy.Predicate);
             }
 
             return await Task.Run(()=> query);
