@@ -23,7 +23,7 @@ namespace Data.Concreate
 
         public async Task<TEntity> Get(params Expression<Func<TEntity, bool>>[] filters)
         {
-            var query = _context.Set<TEntity>().AsQueryable();
+            var query = _context.Set<TEntity>().Where(x=> x.ActiveFlg == true);
             
             if (filters != null || filters.Length > 0)
                 foreach (var filter in filters)
@@ -34,7 +34,7 @@ namespace Data.Concreate
 
         public async Task<IList<TEntity>> GetList(IList<Expression<Func<TEntity, bool>>> filters = null, OrderByExpression<TEntity> orderBy = null)
         {
-            var query = _context.Set<TEntity>().AsQueryable();
+            var query = _context.Set<TEntity>().Where(x=> x.ActiveFlg == true);
             if (filters != null || filters.Count > 0)
                 foreach (var filter in filters)
                     query = query.Where(filter);
@@ -63,7 +63,7 @@ namespace Data.Concreate
 
         public async Task<IQueryable<TEntity>> GetQuery(IList<Expression<Func<TEntity, bool>>> filters = null, OrderByExpression<TEntity> orderBy = null)
         {
-            var query = _context.Set<TEntity>().AsQueryable();
+            var query = _context.Set<TEntity>().Where(x=> x.ActiveFlg == true);
             
             if (filters != null)
                 foreach (var filter in filters)
@@ -80,13 +80,13 @@ namespace Data.Concreate
                     else
                         query = query.OrderByDescending(orderBy.Predicate);
                 else
-                if (orderBy.PredicateThenBy != null)
-                    if (orderBy.PredicateThenBy.Direction == OrderBy.desc)
-                        query = query.OrderBy(orderBy.Predicate).ThenByDescending(orderBy.PredicateThenBy.Predicate);
+                    if (orderBy.PredicateThenBy != null)
+                        if (orderBy.PredicateThenBy.Direction == OrderBy.desc)
+                            query = query.OrderBy(orderBy.Predicate).ThenByDescending(orderBy.PredicateThenBy.Predicate);
+                        else
+                            query = query.OrderBy(orderBy.Predicate).ThenBy(orderBy.PredicateThenBy.Predicate);
                     else
-                        query = query.OrderBy(orderBy.Predicate).ThenBy(orderBy.PredicateThenBy.Predicate);
-                else
-                    query = query.OrderBy(orderBy.Predicate);
+                        query = query.OrderBy(orderBy.Predicate);
             }
 
             return await Task.Run(()=> query);
@@ -94,6 +94,7 @@ namespace Data.Concreate
 
         public async Task<TEntity> Add(TEntity entity)
         {
+            entity.ActiveFlg = true;
             var result = _context.Entry(entity);
             result.State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -110,8 +111,9 @@ namespace Data.Concreate
 
         public async Task<bool> Delete(TEntity entity)
         {
+            entity.ActiveFlg = false;
             var result = _context.Entry(entity);
-            result.State = EntityState.Deleted;
+            result.State = EntityState.Modified;
             return await _context.SaveChangesAsync() > 0;
         }
     }

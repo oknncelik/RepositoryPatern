@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Api.Models;
 using Business.Abstruct;
 using Business.Concreate;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -21,17 +19,29 @@ namespace Api.Controllers
         {
             _productManager = new ProductManager();
         }
+        
+        [HttpGet("Get")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return Ok(new ServiceResult<ProductModel>(await _productManager.GetProduct(id)));
+        }
+        
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(ProductModel product)
+        {
+            return Ok(new ServiceResult<bool>(await _productManager.DeleteProduct(product)));
+        }
 
         [HttpPost("GetList")]
         public async Task<IActionResult> GetList(ProductFilter filter)
         {
-            return Ok(await _productManager.GetProducts(filter));
+            return Ok(new ServiceResult<IList<ProductModel>>(await _productManager.GetProducts(filter)));
         }
         
         [HttpPost("Post")]
         public async Task<IActionResult> Post(ProductModel product)
         {
-            return Ok(await _productManager.AddProducts(product));
+            return Ok(new ServiceResult<ProductModel>(await _productManager.AddProducts(product)));
         }
     }
 }

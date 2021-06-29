@@ -21,7 +21,18 @@ namespace Business.Concreate
         {
             _productRepository = new ProductRepository();
         }
-        
+
+        public async Task<ProductModel> GetProduct(int id)
+        {
+            var result = await _productRepository.Get(x => x.Id == id);
+            return EntityToModel(result);
+        }
+
+        public async Task<bool> DeleteProduct(ProductModel product)
+        {
+            return await _productRepository.Delete(ModelToEntity(product));
+        }
+
         public async Task<IList<ProductModel>> GetProducts(ProductFilter filter)
         {
             var queryFilter = new List<Expression<Func<Product, bool>>>();
@@ -44,7 +55,7 @@ namespace Business.Concreate
             };
 
             var result = await _productRepository.GetList(queryFilter.ToArray(), orderByFilter);
-            return result.Select(DataToEntity).ToList();
+            return result.Select(EntityToModel).ToList();
 
         }
 
@@ -59,12 +70,29 @@ namespace Business.Concreate
                 ActiveFlg = true
             });
 
-            return DataToEntity(result);
+            return EntityToModel(result);
         }
 
-        private ProductModel DataToEntity(Product arg)
+        private ProductModel EntityToModel(Product arg)
         {
+            if (arg == null)
+                return null;
             return new ProductModel()
+            {
+                Id = arg.Id,
+                Name = arg.Name,
+                Description = arg.Description,
+                CategoryId = arg.CategoryId,
+                ActiveFlg = arg.ActiveFlg,
+                Price = arg.Price
+            };
+        }
+        
+        private Product ModelToEntity(ProductModel arg)
+        {
+            if (arg == null)
+                return null;
+            return new Product()
             {
                 Id = arg.Id,
                 Name = arg.Name,
