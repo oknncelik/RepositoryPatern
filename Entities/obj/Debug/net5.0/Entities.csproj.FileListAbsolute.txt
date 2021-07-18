@@ -2,7 +2,6 @@
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/bin/Debug/net5.0/Entities.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/bin/Debug/net5.0/ref/Entities.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/bin/Debug/net5.0/Entities.pdb
-/Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.csprojAssemblyReference.cache
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.GeneratedMSBuildEditorConfig.editorconfig
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.AssemblyInfoInputs.cache
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.AssemblyInfo.cs
@@ -10,3 +9,4 @@
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/ref/Entities.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.pdb
+/Users/oknncelik/RiderProjects/RepositoryPatern/Entities/obj/Debug/net5.0/Entities.csproj.AssemblyReference.cache

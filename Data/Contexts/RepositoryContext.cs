@@ -15,7 +15,7 @@ namespace Data.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=localhost,1433; database=RepositoryDb; User ID=sa; password=19Mayis1919!;");
+                @"Server=localhost,1433; database=RepositoryDb; User ID=sa; password=19Mayis1919;");
         }
 
         private DbSet<Product> Products { get; set; }

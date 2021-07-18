@@ -29,7 +29,8 @@ namespace Api.Models
                 Code = 204;
                 Message = "Kayıt bulunamadı !";
                 Status = Status.Info;
-            }
+            }else
+                Result = result;
         }
     }
 

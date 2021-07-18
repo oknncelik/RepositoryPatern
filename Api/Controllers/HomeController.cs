@@ -12,12 +12,11 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class HomeController : ControllerBase
     {
-
         private readonly IProductManager _productManager;
 
-        public HomeController()
+        public HomeController(IProductManager productManager)
         {
-            _productManager = new ProductManager();
+            _productManager = productManager;
         }
         
         [HttpGet("Get")]

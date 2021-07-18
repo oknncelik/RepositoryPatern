@@ -8,7 +8,6 @@
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/bin/Debug/net5.0/Common.pdb
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/bin/Debug/net5.0/Data.pdb
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/bin/Debug/net5.0/Entities.pdb
-/Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.csprojAssemblyReference.cache
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.GeneratedMSBuildEditorConfig.editorconfig
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.AssemblyInfoInputs.cache
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.AssemblyInfo.cs
@@ -17,3 +16,4 @@
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/ref/Business.dll
 /Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.pdb
+/Users/oknncelik/RiderProjects/RepositoryPatern/Business/obj/Debug/net5.0/Business.csproj.AssemblyReference.cache
